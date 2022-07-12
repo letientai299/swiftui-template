@@ -1,5 +1,5 @@
 import ProjectDescription
-import ProjectDescription
+
 
 let project = Project(
     name: "App",
@@ -15,7 +15,21 @@ let project = Project(
             sources: ["Targets/App/Sources/**"],
             dependencies: [
                 .external(name: "Inject"),
-            ]
+            ],
+            settings: Settings.settings(configurations: [
+                .debug(name: "Debug", xcconfig: Path("Configs/Debug.xcconfig"))
+            ])
         ),
+        Target(
+                name: "AppTests",
+                platform: .iOS,
+                product: .unitTests,
+                bundleId: "tai.le.appTests",
+                infoPlist: .default,
+                sources: ["Targets/App/Tests/**"],
+                dependencies: [
+                    .target(name: "App"),
+                ]
+        )
     ]
 )

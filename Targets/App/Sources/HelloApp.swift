@@ -1,24 +1,20 @@
 import SwiftUI
 import Inject
 
+
 @main
 struct HelloApp: App {
-    @ObservedObject private var iO = Inject.observer
-
+    @ObservedObject private var injectObserver = Inject.observer
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .enableInjection()
+            ContentView().enableInjection()
         }
     }
 }
 
 public struct ContentView: View {
-    public init() {}
-
     public var body: some View {
-        Text("Hello, World! 2")
-            .padding()
+        Text("Hello, World!").padding()
     }
 }
 

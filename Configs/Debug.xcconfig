@@ -1,0 +1,2 @@
+ENABLE_PREVIEWS=YES
+OTHER_LDFLAGS[arch=*][config=Debug]=-Xlinker -interposable
