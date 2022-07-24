@@ -1,4 +1,4 @@
-import Inject
+@_exported import Inject
 import SwiftUI
 
 @main
@@ -6,14 +6,16 @@ struct HelloApp: App {
   @ObservedObject private var injectObserver = Inject.observer
   var body: some Scene {
     WindowGroup {
-      ContentView().enableInjection()
+      ContentView()
+        .frame(minWidth: 400, minHeight: 300)
+        .enableInjection()
     }
   }
 }
 
 public struct ContentView: View {
   public var body: some View {
-    Text("Hello, World!").padding()
+    Text("Hello!").padding()
   }
 }
 
