@@ -41,9 +41,11 @@ $ appcode .
 
 ## TODO
 
-- [ ] Config code formatting
+- [x] Config code formatting
+  - `make fmt`
 - [ ] CI/CD
 - [ ] UI test
 - [ ] Benchmark
 - [ ] Setup for MacOS, WatchOS
+  - [x] macOS
 - [ ] Setup other useful libraries: logging, testing, ...

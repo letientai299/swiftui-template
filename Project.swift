@@ -15,7 +15,18 @@ let macTargets = [
     settings: Settings.settings(configurations: [
       .debug(name: "Debug", xcconfig: Path("Configs/Debug.xcconfig"))
     ])
-  )
+  ),
+  Target(
+    name: "MacAppTests",
+    platform: .macOS,
+    product: .unitTests,
+    bundleId: "tai.le.appTests",
+    infoPlist: .default,
+    sources: ["Targets/MacApp/Tests/**"],
+    dependencies: [
+      .target(name: "MacApp")
+    ]
+  ),
 ]
 
 let iosTargets = [
@@ -50,7 +61,7 @@ let iosTargets = [
 let project = Project(
   name: "App",
   organizationName: "tai.le",
-  packages:  [
+  packages: [
     .remote(
       url: "https://github.com/krzysztofzablocki/Inject.git",
       requirement: .upToNextMinor(from: "1.2.0")
@@ -58,4 +69,3 @@ let project = Project(
   ],
   targets: macTargets + iosTargets
 )
-

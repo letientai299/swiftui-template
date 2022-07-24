@@ -2,7 +2,7 @@
 import SwiftUI
 
 @main
-struct HelloApp: App {
+struct IosApp: App {
   @ObservedObject private var injectObserver = Inject.observer
   var body: some Scene {
     WindowGroup {
