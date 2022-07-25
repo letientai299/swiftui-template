@@ -1,14 +1,20 @@
+import Foundation
 import ProjectDescription
+
+let projectName = FileManager()
+    .currentDirectoryPath
+    .components(separatedBy: "/")
+    .last!
 
 let macTargets = [
   Target(
-    name: "MacApp",
+    name: "mac",
     platform: .macOS,
     product: .app,
     bundleId: "tai.le.app",
     deploymentTarget: .macOS(targetVersion: "12.3"),
     infoPlist: .default,
-    sources: ["Targets/MacApp/Sources/**"],
+    sources: ["mac/Sources/**"],
     dependencies: [
       .package(product: "Inject")
     ],
@@ -17,27 +23,27 @@ let macTargets = [
     ])
   ),
   Target(
-    name: "MacAppTests",
+    name: "macTests",
     platform: .macOS,
     product: .unitTests,
     bundleId: "tai.le.appTests",
     infoPlist: .default,
-    sources: ["Targets/MacApp/Tests/**"],
+    sources: ["mac/Tests/**"],
     dependencies: [
-      .target(name: "MacApp")
+      .target(name: "mac")
     ]
   ),
 ]
 
 let iosTargets = [
   Target(
-    name: "App",
+    name: "iOS",
     platform: .iOS,
     product: .app,
     bundleId: "tai.le.app",
     deploymentTarget: .iOS(targetVersion: "14.0", devices: .iphone),
     infoPlist: .default,
-    sources: ["Targets/App/Sources/**"],
+    sources: ["iOS/Sources/**"],
     dependencies: [
       .package(product: "Inject")
     ],
@@ -46,20 +52,20 @@ let iosTargets = [
     ])
   ),
   Target(
-    name: "AppTests",
+    name: "iOSTests",
     platform: .iOS,
     product: .unitTests,
     bundleId: "tai.le.appTests",
     infoPlist: .default,
-    sources: ["Targets/App/Tests/**"],
+    sources: ["iOS/Tests/**"],
     dependencies: [
-      .target(name: "App")
+      .target(name: "iOS")
     ]
   ),
 ]
 
 let project = Project(
-  name: "App",
+  name: projectName,
   organizationName: "tai.le",
   packages: [
     .remote(
